@@ -1,6 +1,7 @@
 export EDITOR='vim'
 export TERM=xterm-color
 
+export LC_CTYPE=en_CA.UTF-8
 export LANG=en_CA.UTF-8
 export LANGUAGE=en_CA.UTF-8
 export LC_ALL=en_CA.UTF-8
@@ -17,12 +18,12 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 	debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+if [ -f ~/.localrc ]; then
+	. ~/.localrc
+fi
+
 if [ -d ~/.bash ]; then
 	for f in ~/.bash/*; do
 		. $f
 	done
-fi
-
-if [ -f ~/.localrc ]; then
-	. ~/.localrc
 fi

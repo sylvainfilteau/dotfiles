@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Script that makes possible to open a Window over a VMWare Server virtual
+# machine on Linux using the Firefox VMWare plugin
+
+read -s  -p Password: password
+echo
+
+cd ~/.mozilla/firefox/kyxefuoa.default/extensions/VMwareVMRC@vmware.com/plugins/
+
+VMWARE_USE_SHIPPED_GTK=yes ./vmware-vmrc -h "nibbler.workshop.ada:443" -u sylvain -p $password -M $1

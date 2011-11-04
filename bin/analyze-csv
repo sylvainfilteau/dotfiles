@@ -1,0 +1,55 @@
+#!/usr/local/bin/php
+<?php
+
+$args = $_SERVER['argv'];
+array_shift($args);
+
+$file_to_analyse = array_shift($args);
+
+$fp = fopen($file_to_analyse, 'r');
+
+$headers = fgetcsv($fp);
+
+$stats = array();
+foreach ($headers as $k => $v) {
+	$stats[$k] = array(
+		'header_name' => $v,
+		'longest_value' => '',
+		'longest_value_row_num' => -1,
+		'type' => 'numeric'
+	);
+}
+
+$nb_rows = 0;
+
+while ($row = fgetcsv($fp)) {
+	foreach ($row as $k => $val) {
+		if ($stats[$k]['type'] != 'string') {
+			if (preg_match('/\d{4}-\d{2}-\d{2}/', $val)) {
+				$stats[$k]['type'] = 'date';
+			} elseif (!is_numeric($val)) {
+				$stats[$k]['type'] = 'string';
+			}
+		}
+
+		if ($stats[$k]['type'] == 'date' && !preg_match('/\d{4}-\d{2}-\d{2}/', $val)) {
+			$stats[$k]['type'] = 'string';
+		}
+
+		if (strlen($stats[$k]['longest_value']) <= strlen($val)) {
+			$stats[$k]['longest_value'] = $val;
+			$stats[$k]['longest_value_row_num'] = $nb_rows;
+		}
+	}
+
+	$nb_rows++;
+}
+
+echo "Here are the statistics for the file $file_to_analyse\n";
+foreach ($stats as $k => $stat) {
+	echo str_pad($k + 1, 3, ' ', STR_PAD_LEFT) . ". " . str_pad($stat['header_name'], 30, ' ', STR_PAD_RIGHT) . ' '
+			. str_pad($stat['type'], 7, ' ', STR_PAD_RIGHT) . ' '
+			. "maxlength: \033[0;33m" . str_pad(strlen($stat['longest_value']), 3, " ", STR_PAD_LEFT) . "\033[0m "
+			. 'observed at line ' . str_pad($stat['longest_value_row_num'] + 1, 4, ' ', STR_PAD_LEFT) . "\n";
+}
+echo "There is $nb_rows records in the file\n";

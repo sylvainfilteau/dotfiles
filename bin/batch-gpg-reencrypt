@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Use this script to decrypt and reencrypt everything with a new key
+
+NEWKEY="$1"
+
+read -s -p "GPG Passphrase: " PASSPHRASE
+
+echo
+echo $PASSPHRASE | gpg --passphrase-fd 0 --decrypt-files *.gpg
+
+gpg -r $NEWKEY --encrypt-files *.tgz

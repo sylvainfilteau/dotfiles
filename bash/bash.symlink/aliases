@@ -1,0 +1,15 @@
+function spin {
+	echo -en '⬖' ; sleep .05
+	echo -en '⬘' ; sleep .05
+	echo -en '⬗' ; sleep .05
+	echo -en '⬙' ; sleep .05
+}
+# ◐ ◒ ◑ ◓
+
+alias infinitespin='while [ 1 ]; do spin; done'
+alias grep='grep --color -n'
+
+if [ "$TERM" != "dumb" ]; then
+	eval "`dircolors -b`"
+	alias ls='ls --color=auto'
+fi

@@ -5,16 +5,15 @@ C_LIGHT_GRAY="\[\033[38;5;245m\]"
 C_RESET="\[\033[0m\]"
 
 function my_prompt {
-if [ $(id -u) -eq 0 ];
-then 
-	PS1="$C_RED⚡$C_RESET ($C_GRAY⌘ $C_LIGHT_GRAY\W$C_RESET)$(__git_ps1 ' (%s)') $C_GRAY❯$C_RESET "
-	# ✖ ✟ ☢ ♂ ⚡ 
-else
-	PS1="$C_GREEN✔$C_RESET ($C_GRAY⌘ $C_LIGHT_GRAY\W$C_RESET)$(__git_ps1 ' (%s)') $C_GRAY❯$C_RESET "
-	# ✔ ✦ ✩ ✪ ❖ ⟁ ♬ ⚪ ◎ ◯ ⌘ ※ ⁂ 
-fi
-
-# ❯ ➜ ➠ ⟿
+	if [ $(id -u) -eq 0 ];
+	then 
+		PS1="${C_RED}⚡${C_RESET} (${C_GRAY}⌘ ${C_LIGHT_GRAY}\W${C_RESET})$(__git_ps1 ' (%s)') ${C_GRAY}❯${C_RESET} "
+		# ✖ ✟ ☢ ♂ ⚡ 
+	else
+		PS1="${C_GREEN}✔${C_RESET} (${C_GRAY}⌘ ${C_LIGHT_GRAY}\W${C_RESET})$(__git_ps1 ' (%s)') ${C_GRAY}❯${C_RESET} "
+		# ✔ ✦ ✩ ✪ ❖ ⟁ ♬ ⚪ ◎ ◯ ⌘ ※ ⁂ 
+	fi
+	# ❯ ➜ ➠ ⟿
 }
 
-PROMPT_COMMAND=my_prompt
+PROMPT_COMMAND="my_prompt; $PROMPT_COMMAND"

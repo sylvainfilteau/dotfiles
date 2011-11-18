@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# I could use debarchiver instead of this command
+
+REPO=$1
+DEB=$2
+
+cp $DEB $REPO
+dpkg-scanpackages $REPO /dev/null > $REPO/Packages

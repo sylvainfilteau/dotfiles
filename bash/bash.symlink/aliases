@@ -8,6 +8,7 @@ function spin {
 
 alias infinitespin='while [ 1 ]; do spin; done'
 alias grep='grep --color -n'
+alias p='pwd'
 
 if [ "$DO_NOT_HAVE_LS_COLOR" != "1" ]; then
 	eval "`dircolors -b`"

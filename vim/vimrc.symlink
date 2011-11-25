@@ -27,6 +27,11 @@ set smarttab      " insert tabs on the start of a line according to
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 
+set wildmenu
+set wildmode=list:longest,list:full
+
+set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
+
 " set filetype stuff to on
 filetype on
 filetype plugin on

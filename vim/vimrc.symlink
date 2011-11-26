@@ -31,6 +31,7 @@ set wildmenu
 set wildmode=list:longest,list:full
 
 set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
+set laststatus=2
 
 " set filetype stuff to on
 filetype on

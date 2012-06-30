@@ -63,6 +63,16 @@ imap <C-tab> <Esc>:tabnext<CR>i
 nmap <C-t> :tabnew<CR>
 imap <C-t> <Esc>:tabnew<CR>
 
+" Set the paste toggle when pressing <F2>
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+
+" Setting the indentation mode for comet-module-b
+" to 4 spaces (instead of <TAB>)
+augroup ProjectSetup
+au BufRead,BufEnter ~/src/comet-module-b/* set et sts=4 cindent cinoptions=...
+augroup END
+
+" Remove trailing whitespace
+autocmd FileType c,cpp,java,php,js,mkd,md autocmd BufWritePre <buffer> :%s/\s\+$//e

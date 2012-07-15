@@ -33,6 +33,11 @@ set wildmode=list:longest,list:full
 set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
 set laststatus=2
 
+" Add color to the 81th column
+set textwidth=80
+set colorcolumn=+1
+hi ColorColumn guibg=#2d2d2d ctermbg=246
+
 " set filetype stuff to on
 filetype on
 filetype plugin on

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+readonly PROGNAME=$(basename $0)
+readonly ARGS=($@)
+readonly API_KEY=c76e0ded49144bd780015b3dd1ca2d34
+readonly DATE_REGEX='[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+
+
+main() {
+	local url="http://openexchangerates.org/api"
+	local date=${ARGS[0]}
+
+	if is_valid_date $date ; then
+		url="$url/historical/$date.json"
+	else
+		url="$url/latest.json"
+	fi
+
+	url="$url?app_id=$API_KEY"
+
+	http_call $url
+}
+
+is_valid_date() {
+	local date=$1
+
+	[[ $date =~ $DATE_REGEX ]]
+}
+
+http_call() {
+	local url=$1
+
+	curl $url
+}
+
+main

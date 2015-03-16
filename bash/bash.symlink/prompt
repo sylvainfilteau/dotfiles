@@ -16,4 +16,8 @@ function my_prompt {
 	# ❯ ➜ ➠ ⟿
 }
 
+function my_prompt() {
+	export PS1="$(~/bin/powerline-shell.py --mode patched $? 2> /dev/null) "
+}
+
 PROMPT_COMMAND="my_prompt; $PROMPT_COMMAND"

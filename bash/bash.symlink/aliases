@@ -11,6 +11,9 @@ alias grep='grep --color -n'
 alias p='pwd'
 alias json='python -mjson.tool'
 alias ws='python -m SimpleHTTPServer'
+alias fsrefresh='ls -laR > /dev/null'
+alias dnsrefresh='sudo killall -HUP mDNSResponder'
+alias altodnsrefresh='ssh gestion@workshop.ada sudo service bind9 restart'
 
 if [ "$DO_NOT_HAVE_LS_COLOR" != "1" ]; then
 	eval "`dircolors -b`"

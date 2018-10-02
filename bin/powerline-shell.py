@@ -1,0 +1,1 @@
+/Users/sylvain/src/powerline-shell/powerline-shell.py

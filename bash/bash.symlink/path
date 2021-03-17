@@ -5,12 +5,3 @@ fi
 if [ -d ~/bin ] ; then
 	PATH=~/bin:"${PATH}"
 fi
-
-if [ -d /Applications/SenchaSDKTools-2.0.0-Beta ] ; then
-	PATH=/Applications/SenchaSDKTools-2.0.0-Beta:/Applications/SenchaSDKTools-2.0.0-Beta/jsbuilder:/Applications/SenchaSDKTools-2.0.0-Beta/bin:"${PATH}"
-fi
-
-if [ -d /usr/local/Sencha/Cmd/3.0.0.250 ] ; then
-	PATH=/usr/local/Sencha/Cmd/3.0.0.250:$PATH
-	export SENCHA_CMD_3_0_0="/usr/local/Sencha/Cmd/3.0.0.250"
-fi

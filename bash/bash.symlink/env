@@ -1,1 +1,5 @@
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_vault_password
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/configurations/microk8s-desktop-x299-config
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/configurations/stress.yaml
+export ANDROID_HOME=/Users/sylvain/Library/Android/sdk
